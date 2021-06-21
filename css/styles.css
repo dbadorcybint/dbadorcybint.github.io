@@ -1,0 +1,68 @@
+*,
+html,
+body {
+    background-color: #101127;
+    color: white;
+}
+
+.read-time {
+    font-size: medium;
+}
+
+.top-row {
+    margin-top: 10rem !important;
+}
+
+.course-title {
+    font-size: x-large;
+}
+
+.hide-progress {
+    display: none !important;
+}
+
+div.progress {
+    width: 12rem;
+    height: 7px;
+}
+
+.progress-title {
+    font-size: small;
+}
+
+.par-area {
+    margin-top: 4rem;
+}
+
+.par-ipsum {
+    display: inline-block;
+    width: 37.5vw;
+}
+
+.btns {
+    margin-top: 2rem;
+}
+
+.fa-arrow-left {
+    background-color: #6c757d;
+    margin-right: 1rem;
+}
+
+.fa-arrow-right {
+    background-color: #f8f9fa;
+    color: black !important;
+    margin-left: 1rem;
+}
+
+.launch-btn {
+    margin-left: 3vw;
+}
+
+.next-btn {
+    color: black !important;
+    margin-left: 3vw;
+}
+
+.hide-par {
+    display: none;
+}

@@ -66,3 +66,7 @@ div.progress {
 .hide-par {
     display: none;
 }
+
+.par-final {
+    font-size: xx-large;
+}

@@ -28,6 +28,8 @@
         $('#oauth_signature').val(oauthSignature);
     };
 
+    $('#ltiLaunchForm').submit(this.updateLtiLaunchForm)
+
     this.makeRandomFullName = function () {
         var firstName = ""
         var lastName = ""

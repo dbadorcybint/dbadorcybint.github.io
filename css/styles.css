@@ -70,3 +70,32 @@ div.progress {
 .par-final {
     font-size: xx-large;
 }
+
+.input-box {
+    margin-top: 3vh;
+}
+
+.form-control {
+    background-color: #555 !important;
+    border-color: black !important;
+    color: white !important;
+    width: 21vw !important;
+}
+
+.form-control::placeholder {
+    color: #909090 !important;
+}
+
+.login-title {
+    margin-top: 3vh;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.login-button {
+    margin-top: 4vh;
+}
+
+.login-btn {
+    width: 14vw;
+}

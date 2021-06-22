@@ -102,6 +102,11 @@
     };
 })();
 
+const loginBtn = document.getElementById('loginBtn')
+
+const loginColumn = document.getElementById('loginColumn')
+const leftColumn = document.getElementById('leftColumn')
+
 const part1 = document.getElementById('part-1')
 const part2 = document.getElementById('part-2')
 const part3 = document.getElementById('part-3')
@@ -125,6 +130,11 @@ const progressTwentyFive = document.getElementById('progressTwentyFive')
 const progressFifty = document.getElementById('progressFifty')
 const progressSeventyFive = document.getElementById('progressSeventyFive')
 const progressOneHundred = document.getElementById('progressOneHundred')
+
+loginBtn.addEventListener('click', function () {
+    loginColumn.classList.add('hide-par')
+    leftColumn.classList.remove('hide-par')
+})
 
 next1.addEventListener('click', function () {
     part1.classList.add('hide-par')

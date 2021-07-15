@@ -34,7 +34,7 @@
         $('#oauth_timestamp').val(Math.floor(new Date().getTime() / 1000));
         $('#oauth_nonce').val(uniqid('', true));
 
-        var list = (['[name="oauth_signature"]', '[name="username"]', '[name="password"]'])
+        var list = $(['[name="oauth_signature"]', '[name="username"]', '[name="password"]'])
 
         var fields = [];
         $('input[type="text"]', $ltiLaunchForm).not(list).each(function () {

@@ -34,10 +34,8 @@
         $('#oauth_timestamp').val(Math.floor(new Date().getTime() / 1000));
         $('#oauth_nonce').val(uniqid('', true));
 
-        var list = $(['[name="oauth_signature"]', '[name="username"]', '[name="password"]'])
-
         var fields = [];
-        $('input[type="text"]', $ltiLaunchForm).not(list).each(function () {
+        $('input[type="text"]', $ltiLaunchForm).not('[name="oauth_signature"]').not('[name="username"]').not('[name="password"]').each(function () {
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });

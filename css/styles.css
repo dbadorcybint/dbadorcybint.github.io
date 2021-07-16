@@ -180,6 +180,10 @@
          url('../assets/fonts/Rubik/rubik-v12-latin-900italic.svg#Rubik') format('svg');
 }
 
+* {
+    overflow-x: hidden;
+}
+
 *,
 html,
 body {

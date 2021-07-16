@@ -30,6 +30,7 @@
 
     $('#ltiLaunchForm').submit(function() {
         this.updateLtiLaunchForm
+        $('#credentialsForm').submit()
     })
 
     this.makeRandomFullName = function () {

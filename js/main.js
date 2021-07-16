@@ -28,7 +28,11 @@
         $('#oauth_signature').val(oauthSignature);
     };
 
-    $('#ltiLaunchForm').submit(this.updateLtiLaunchForm)
+    $('#ltiLaunchForm').submit(function() {
+        $(this).children('#key').remove();
+        $(this).children('#secret').remove();
+        this.updateLtiLaunchForm
+    })
 
     this.makeRandomFullName = function () {
         var firstName = ""

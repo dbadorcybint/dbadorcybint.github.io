@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
     <script src="https://kit.fontawesome.com/d46af11c6d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css"></link>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -12,149 +15,205 @@
 <body>
     <div class="container-fluid">
         <div class="row top-row">
-            <ul id="noneForm" class="hide-par">
-                <li>
-                    <label>Launch URL:
-                        <input style="background: bisque;" id="launchUrl" value="https://platform-lab.cybintsolutions.com/lti/auth/" type="text" size="80"/></label>
-                </li>
-            </ul>
-            <div class="top-image">
-                <img src="images/white-logo.png" width="200vw" height="auto" alt="Cybint logo"/>
-            </div>
-            <div class="d-flex flex-column justify-content-center align-items-center">
-                <div class="login-title">
-                    Hello!
-                </div>
-                <div class="sign-in-text">
-                    Sign into your account
-                </div>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-transparent" id="basic-addon1">
-                           <img src="images/more_icons-02.png" style="width: 40px; height: 40px;" />
-                        </span>
-                    </div>
-                    <input id="key" class="form-control no-border" type="text" name="username"/>
-                </div>
-                <div class="input-group input-group-two">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-transparent" id="basic-addon1">
-                           <img src="images/more_icons-03.png" style="width: 40px; height: 40px;" />
-                        </span>
-                    </div>
-                    <input id="secret" class="form-control no-border" type="password" name="password"/>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center bottom-options">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Remember Me
-                    </label>
-                </div>
-                <div class="forgot-password">
-                    Forgot password?
-                </div>
-            </div>
-            <form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="" target="_blank">
                 <ul class="hide-par">
-                    <li style="display: none;"><label>user_id:
-                        <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
                     <li>
-                        <label>custom_lab_id:
-                            <input style="background: bisque;" type="text" name="custom_lab_id" id="custom_lab_id" value="lab-7ijOJl9R0bCM6fE3">
-                        </label>
-                    </li>
-                    <li style="display: none;"><label>roles:
-                        <input type="text" name="roles" value="Learner"></label></li>
-                    <li style="display: none;"><label>resource_link_id:
-                        <input type="text" name="resource_link_id" value="resLink_217"></label></li>
-                    <li style="display: none;"><label>resource_link_title:
-                        <input type="text" name="resource_link_title" value="SECURE CODE REVIEW"></label></li>
-                    <li style="display: none;"><label>resource_link_description:
-                        <input type="text" name="resource_link_description"
-                            value="Check through Code for vulnerabilities."></label></li>
-                    <li>
-                        <label>lis_person_name_full:
-                            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac">
-                        </label>
-                    </li>
-                    <li>
-                        <label>lis_person_name_family:
-                            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac">
-                        </label>
-                    </li>
-                    <li>
-                        <label>lis_person_name_given:
-                            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac">
-                        </label>
-                    </li>
-                    <li>
-                        <label>lis_person_contact_email_primary:
-                            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="checkisaac@school.edu">
-                        </label>
-                    </li>
-                    <li style="display: none;">
-                        <label>lis_person_sourcedid:
-                            <input style="background: bisque;" type="text" name="lis_person_sourcedid" id="lis_person_sourcedid" value="result_217_1481">
-                        </label>
-                    </li>
-                    <li style="display: none;"><label>context_id:
-                        <input type="text" name="context_id" value="contextID_1136"></label></li>
-                    <li style="display: none;"><label>context_title:
-                        <input type="text" name="context_title"
-                            value="Design of API"></label></li>
-                    <li style="display: none;"><label>context_label:
-                        <input type="text" name="context_label" value="SI182"></label></li>
-                    <li style="display: none;"><label>tool_consumer_instance_guid:
-                        <input type="text" name="tool_consumer_instance_guid"
-                            value="https://training.cybintsolutions.com/"></label></li>
-                    <li style="display: none;"><label>tool_consumer_instance_description:
-                        <input type="text" name="tool_consumer_instance_description"
-                            value="University of School (LMSng)"></label></li>
-                    <li style="display: none;"><label>custom_component_display_name:
-                        <input type="text" name="custom_component_display_name"
-                            value="lab_check"></label></li>
-            
-                    <li style="display: none;"><label>lti_version:
-                        <input type="text" name="lti_version" value="LTI-1p0"></label></li>
-                    <li style="display: none;"><label>lti_message_type:
-                        <input type="text" name="lti_message_type"
-                            value="basic-lti-launch-request"></label></li>
-            
-                    <li style="display: none;"><label>oauth_callback:
-                        <input type="text" name="oauth_callback" value="about:blank"></label></li>
-                    <li style="display: none;"><label>oauth_consumer_key:
-                        <input type="text" name="oauth_consumer_key" id="oauth_consumer_key" readonly
-                            value=""></label></li>
-                    <li style="display: none;"><label>oauth_version:
-                        <input type="text" name="oauth_version" value="1.0"></label></li>
-                    <li style="display: none;"><label>oauth_nonce:
-                        <input type="text" name="oauth_nonce" id="oauth_nonce" value=""></label></li>
-                    <li style="display: none;"><label>oauth_timestamp:
-                        <input type="text" name="oauth_timestamp" id="oauth_timestamp" value=""></label>
-                    </li>
-                    <li style="display: none;"><label>oauth_signature_method:
-                        <input type="text" name="oauth_signature_method" value="HMAC-SHA1"></label>
-                    </li>
-            
-                    <li style="display: none;">oauth_signature:
-                        <input type="text" readonly name="oauth_signature" id="oauth_signature" value=""
-                            size="40">
+                        <label>Launch URL:
+                            <input style="background: bisque;" id="launchUrl" value="https://platform-lab.cybintsolutions.com/lti/auth/" type="text" size="80"/></label>
                     </li>
                 </ul>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="login-button">
-                        <button id="launch_lti" type="submit" class="btn login-btn">Login</button>
+                <div id="loginColumn" class="col-12">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div>
+                            <img src="images/test.png" width="90vw" height="auto" alt="Cybint logo"/>
+                        </div>
+                        <div class="login-title">
+                            Login
+                        </div>
+                        <div class="input-box">
+                            <input id="key" class="form-control" placeholder="Username" value="" type="text"/>
+                        </div>
+                        <div class="input-box">
+                            <input id="secret" class="form-control" placeholder="Password" value="" type="password"/>
+                        </div>
+                        <div class="login-button">
+                            <button id="loginBtn" type="button" class="btn btn-primary btn-lg login-btn">login</button>
+                        </div>
+                    </div>
+                </div>
+            <form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="" target="_blank">
+            <ul class="hide-par">
+                <li style="display: none;"><label>user_id:
+                    <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
+                <li>
+                    <label>custom_lab_id:
+                        <input style="background: bisque;" type="text" name="custom_lab_id" id="custom_lab_id" value="lab-7ijOJl9R0bCM6fE3">
+                    </label>
+                </li>
+                <li style="display: none;"><label>roles:
+                    <input type="text" name="roles" value="Learner"></label></li>
+                <li style="display: none;"><label>resource_link_id:
+                    <input type="text" name="resource_link_id" value="resLink_217"></label></li>
+                <li style="display: none;"><label>resource_link_title:
+                    <input type="text" name="resource_link_title" value="SECURE CODE REVIEW"></label></li>
+                <li style="display: none;"><label>resource_link_description:
+                    <input type="text" name="resource_link_description"
+                        value="Check through Code for vulnerabilities."></label></li>
+                <li>
+                    <label>lis_person_name_full:
+                        <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac">
+                    </label>
+                </li>
+                <li>
+                    <label>lis_person_name_family:
+                        <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac">
+                    </label>
+                </li>
+                <li>
+                    <label>lis_person_name_given:
+                        <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac">
+                    </label>
+                </li>
+                <li>
+                    <label>lis_person_contact_email_primary:
+                        <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="checkisaac@school.edu">
+                    </label>
+                </li>
+                <li style="display: none;">
+                    <label>lis_person_sourcedid:
+                        <input style="background: bisque;" type="text" name="lis_person_sourcedid" id="lis_person_sourcedid" value="result_217_1481">
+                    </label>
+                </li>
+                <li style="display: none;"><label>context_id:
+                    <input type="text" name="context_id" value="contextID_1136"></label></li>
+                <li style="display: none;"><label>context_title:
+                    <input type="text" name="context_title"
+                        value="Design of API"></label></li>
+                <li style="display: none;"><label>context_label:
+                    <input type="text" name="context_label" value="SI182"></label></li>
+                <li style="display: none;"><label>tool_consumer_instance_guid:
+                    <input type="text" name="tool_consumer_instance_guid"
+                        value="https://training.cybintsolutions.com/"></label></li>
+                <li style="display: none;"><label>tool_consumer_instance_description:
+                    <input type="text" name="tool_consumer_instance_description"
+                        value="University of School (LMSng)"></label></li>
+                <li style="display: none;"><label>custom_component_display_name:
+                    <input type="text" name="custom_component_display_name"
+                        value="lab_check"></label></li>
+        
+                <li style="display: none;"><label>lti_version:
+                    <input type="text" name="lti_version" value="LTI-1p0"></label></li>
+                <li style="display: none;"><label>lti_message_type:
+                    <input type="text" name="lti_message_type"
+                        value="basic-lti-launch-request"></label></li>
+        
+                <li style="display: none;"><label>oauth_callback:
+                    <input type="text" name="oauth_callback" value="about:blank"></label></li>
+                <li style="display: none;"><label>oauth_consumer_key:
+                    <input type="text" name="oauth_consumer_key" id="oauth_consumer_key" readonly
+                        value=""></label></li>
+                <li style="display: none;"><label>oauth_version:
+                    <input type="text" name="oauth_version" value="1.0"></label></li>
+                <li style="display: none;"><label>oauth_nonce:
+                    <input type="text" name="oauth_nonce" id="oauth_nonce" value=""></label></li>
+                <li style="display: none;"><label>oauth_timestamp:
+                    <input type="text" name="oauth_timestamp" id="oauth_timestamp" value=""></label>
+                </li>
+                <li style="display: none;"><label>oauth_signature_method:
+                    <input type="text" name="oauth_signature_method" value="HMAC-SHA1"></label>
+                </li>
+        
+                <li style="display: none;">oauth_signature:
+                    <input type="text" readonly name="oauth_signature" id="oauth_signature" value=""
+                        size="40">
+                </li>
+            </ul>
+                <div id="leftColumn" class="col-6 hide-par">
+                    <div class="d-flex justify-content-around">
+                        <span>
+                            <div class="course-title">
+                                Secure Code Review <span class="read-time">(4 min read)</span>
+                            </div>
+                        </span>
+                        <span class="text-center">
+                            <div class="progress-title">
+                                Progress
+                            </div>
+                            <div id="progressZero" class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div id="progressTwentyFive" class="progress hide-progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div id="progressFifty" class="progress hide-progress">
+                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div id="progressSeventyFive" class="progress hide-progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div id="progressOneHundred" class="progress hide-progress">
+                                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </span>
+                    </div>
+                    <div id="part-1">
+                        <div class="d-flex justify-content-center align-items-center par-area">
+                            <div class="par-ipsum">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada ex erat, nec elementum risus iaculis vel. Donec ullamcorper orci sed ante feugiat vestibulum. Suspendisse sed elementum ante. Morbi et lacinia massa. Proin eu lectus massa. Suspendisse ac sapien imperdiet, rutrum neque eget, pulvinar augue. Sed eu bibendum nulla. Praesent tempor nunc luctus felis posuere, at tempus felis dictum. Pellentesque non suscipit ipsum. Mauris commodo felis ipsum, ac vestibulum velit scelerisque ac. Pellentesque a lectus ac felis eleifend gravida ut ut justo. Sed vitae tortor magna.
+                            </div>
+                        </div>
+                        <div class="btns first-stage d-flex justify-content-center align-items-center">
+                            <button id="next-1" type="button" class="btn btn-light next-btn">Next<i class="fas fa-arrow-right fa-1x"></i></button>
+                        </div>
+                    </div>
+                    <div id="part-2" class="hide-par">
+                        <div class="d-flex justify-content-center align-items-center par-area">
+                            <div class="par-ipsum">
+                                Etiam quis lorem id justo condimentum lobortis a nec purus. Mauris pretium iaculis bibendum. Integer non mauris nisi. Vivamus risus augue, gravida commodo viverra non, molestie ut dolor. Aenean mattis, elit a dapibus lobortis, quam nibh fringilla urna, sit amet tristique justo justo in eros. Cras blandit lectus nibh, vel facilisis justo accumsan maximus. Donec quam arcu, luctus ac ex id, pretium finibus nulla. In eget tellus eu justo tincidunt posuere non et neque. Nulla facilisi. Nullam sodales, nisi sed auctor varius, ex nulla mollis lectus, et pulvinar lorem arcu nec lectus.
+                            </div>
+                        </div>
+                        <div class="btns first-stage d-flex justify-content-center align-items-center">
+                            <button id="back-1" type="button" class="btn btn-secondary"><i class="fas fa-arrow-left fa-1x"></i>Back</button>
+                            <button id="next-2" type="button" class="btn btn-light next-btn">Next<i class="fas fa-arrow-right fa-1x"></i></button>
+                        </div>
+                    </div>
+                    <div id="part-3" class="hide-par">
+                        <div class="d-flex justify-content-center align-items-center par-area">
+                            <div class="par-ipsum">
+                                Sed pretium accumsan felis, a varius odio aliquam eleifend. Suspendisse potenti. Sed rhoncus leo a mauris ultrices volutpat. Praesent bibendum, purus a imperdiet porttitor, erat quam imperdiet nulla, nec gravida metus nisi ut urna. Nunc at enim justo. In at risus nunc. Aliquam vel sem non quam tristique consequat ut tempus mauris. Suspendisse vitae aliquam nunc. Pellentesque ut tempor orci. Duis suscipit purus sed eleifend ullamcorper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris id pellentesque eros. Nullam iaculis, tellus quis lobortis tempor, ex dolor porta nibh, vel faucibus ante mi ac dolor. Maecenas sagittis vel nisl in placerat. Phasellus metus turpis, fringilla et sem sit amet, dictum finibus lacus.
+                            </div>
+                        </div>
+                        <div class="btns first-stage d-flex justify-content-center align-items-center">
+                            <button id="back-2" type="button" class="btn btn-secondary"><i class="fas fa-arrow-left fa-1x"></i>Back</button>
+                            <button id="next-3" type="button" class="btn btn-light next-btn">Next<i class="fas fa-arrow-right fa-1x"></i></button>
+                        </div>
+                    </div>
+                    <div id="part-4" class="hide-par">
+                        <div class="d-flex justify-content-center align-items-center par-area">
+                            <div class="par-ipsum">
+                                Integer vitae varius risus. Pellentesque scelerisque a dui at imperdiet. Proin eget leo ut lacus scelerisque ullamcorper at at est. Phasellus ultricies sem vitae nibh rhoncus, at ornare mi tempor. Etiam fringilla ipsum sit amet lorem ornare, ac vehicula tellus dapibus. Sed sed elit at purus accumsan vehicula vitae sed dolor. Nam pretium nibh in pretium tincidunt. Phasellus non mauris sit amet dolor vestibulum facilisis nec nec massa. Mauris vestibulum fringilla leo non iaculis. Praesent sit amet maximus nisi, at volutpat urna. Curabitur non vehicula neque, ac luctus ligula. Etiam non placerat ex. Nunc semper volutpat elit, ac feugiat nisl tincidunt eu.
+                            </div>
+                        </div>
+                        <div class="btns first-stage d-flex justify-content-center align-items-center">
+                            <button id="back-3" type="button" class="btn btn-secondary"><i class="fas fa-arrow-left fa-1x"></i>Back</button>
+                            <button id="next-4" type="button" class="btn btn-light next-btn">Next<i class="fas fa-arrow-right fa-1x"></i></button>
+                        </div>
+                    </div>
+                    <div id="part-5" class="hide-par">
+                        <div class="d-flex justify-content-center align-items-center par-area">
+                            <div class="par-final">
+                                Let's do some Code Review!
+                            </div>
+                        </div>
+                        <div class="btns first-stage d-flex justify-content-center align-items-center">
+                            <button id="back-4" type="button" class="btn btn-secondary"><i class="fas fa-arrow-left fa-1x"></i>Back</button>
+                            <button id="launch_lti" type="submit" class="btn btn-primary launch-btn">Launch</button>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<script src="js/main.js"></script>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/main.js"></script>

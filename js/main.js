@@ -21,6 +21,9 @@
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
+        
+        console.log(fields)
+        
         var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
             rawurlencode(fields.sort().join('&'));
 

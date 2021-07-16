@@ -7,6 +7,7 @@
     };
 
     this.updateLtiLaunchForm = function () {
+        console.log($('#ltiLaunchForm').serialize())
         var launchUrl = $('#launchUrl').val();
         var encodedSecret = encodeURIComponent($('#secret').val()) + '&';
         var $ltiLaunchForm = $('#ltiLaunchForm');
@@ -22,8 +23,6 @@
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
 
-        console.log(fields)
-
         var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
             rawurlencode(fields.sort().join('&'));
 
@@ -31,7 +30,11 @@
         $('#oauth_signature').val(oauthSignature);
     };
 
-    $('#ltiLaunchForm').submit(this.updateLtiLaunchForm)
+    $('#ltiLaunchForm').submit(function() {
+        $('input[name="username"]').prop('disabled', true);
+        $('input[name="password"]').prop('disabled', true);
+        this.updateLtiLaunchForm;
+    });
 
     this.makeRandomFullName = function () {
         var firstName = ""

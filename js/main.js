@@ -6,14 +6,13 @@
         updateLtiLaunchForm()
     };
 
+    var encodedSecret;
+
     this.updateLtiLaunchForm = function () {
-        console.log($('#ltiLaunchForm').serialize())
         var launchUrl = $('#launchUrl').val();
-        var encodedSecret = encodeURIComponent($('#secret').val()) + '&';
         var $ltiLaunchForm = $('#ltiLaunchForm');
 
         $ltiLaunchForm.attr('action', launchUrl);
-        $('#oauth_consumer_key').val($('#key').val());
         $('#oauth_timestamp').val(Math.floor(new Date().getTime() / 1000));
         $('#oauth_nonce').val(uniqid('', true));
 
@@ -108,18 +107,26 @@
     };
 })();
 
-// $('#flexRadioDefault1').click(function() {
-//     if (document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-//         $('#flexRadioDefault1').removeClass('selected-check')
-//     } else {
-//         $('#flexRadioDefault1').addClass('selected-check')
-//     }
-//     if (!document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-//         $('#flexRadioDefault1').prop('checked', false)
-//     } else {
-//         $('#flexRadioDefault1').prop('checked', true)
-//     }
-// })
+$('#flexRadioDefault1').click(function() {
+    if (document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
+        $('#flexRadioDefault1').removeClass('selected-check')
+    } else {
+        $('#flexRadioDefault1').addClass('selected-check')
+    }
+    if (!document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
+        $('#flexRadioDefault1').prop('checked', false)
+    } else {
+        $('#flexRadioDefault1').prop('checked', true)
+    }
+})
+
+$('#key').change(function() {
+    $('#oauth_consumer_key').val($('#key').val());
+})
+
+$('#secret').change(function() {
+    encodedSecret = encodeURIComponent($('#secret').val()) + '&';
+})
 
 // const loginColumn = document.getElementById('loginColumn')
 // const leftColumn = document.getElementById('leftColumn')

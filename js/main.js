@@ -1,3 +1,4 @@
+
 (function () {
     window.onload = function () {
         $('#user_id').val(makeRandomUserId())
@@ -21,11 +22,18 @@
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
+
+        console.log(fields)
+
         var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
             rawurlencode(fields.sort().join('&'));
 
+        console.log(message)
+        console.log(encodedSecret)
+        
         var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
         $('#oauth_signature').val(oauthSignature);
+        console.log($('#oauth_signature').val())
     };
 
     $('#ltiLaunchForm').submit(this.updateLtiLaunchForm)
@@ -101,16 +109,3 @@
         return result;
     };
 })();
-
-$('#flexRadioDefault1').click(function() {
-    if (document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-        $('#flexRadioDefault1').removeClass('selected-check')
-    } else {
-        $('#flexRadioDefault1').addClass('selected-check')
-    }
-    if (!document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-        $('#flexRadioDefault1').prop('checked', false)
-    } else {
-        $('#flexRadioDefault1').prop('checked', true)
-    }
-})

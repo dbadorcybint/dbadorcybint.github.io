@@ -30,9 +30,6 @@
     };
 
     $('#ltiLaunchForm').submit(function() {
-        $(this).children('#key').remove();
-        $(this).children('#password').remove();
-        $(this).children('#flexRadioDefault1').remove();
         this.updateLtiLaunchForm;
     });
 

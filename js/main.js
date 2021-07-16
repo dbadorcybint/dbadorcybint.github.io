@@ -21,18 +21,11 @@
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
-
-        console.log(fields)
-
         var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
             rawurlencode(fields.sort().join('&'));
 
-        console.log(message)
-        console.log(encodedSecret)
-        
         var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
         $('#oauth_signature').val(oauthSignature);
-        console.log($('#oauth_signature').val())
     };
 
     $('#ltiLaunchForm').submit(this.updateLtiLaunchForm)

@@ -8,29 +8,21 @@
 
     this.updateLtiLaunchForm = function () {
         var launchUrl = $('#launchUrl').val();
-        if (sessionStorage.getItem('secret') !== null) {
-            var encodedSecret = encodeURIComponent($('#secret').val()) + '&';
-        }
-
+        var encodedSecret = encodeURIComponent($('#secret').val()) + '&';
         var $ltiLaunchForm = $('#ltiLaunchForm');
 
         $ltiLaunchForm.attr('action', launchUrl);
-        if (sessionStorage.getItem('key') !== null) {
-            $('#oauth_consumer_key').val($('#key').val());
-        }
+        $('#oauth_consumer_key').val($('#key').val());
         $('#oauth_timestamp').val(Math.floor(new Date().getTime() / 1000));
         $('#oauth_nonce').val(uniqid('', true));
 
         var fields = [];
-        $('input', $ltiLaunchForm).not('[name="oauth_signature"]').not('[name="username"]').not('[name="password"]').not('[name="flexRadioDefault"]').each(function () {
+        $('input[type="text"]', $ltiLaunchForm).not('[name="oauth_signature"]').not('[name="username"]').each(function () {
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
-        var message = 'POST&' + encodeURIComponent(launchUrl) + '&' + rawurlencode(fields.sort().join('&'));
-
-        console.log('a')
-        console.log(message)
-        console.log(encodedSecret)
+        var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
+            rawurlencode(fields.sort().join('&'));
 
         var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
         $('#oauth_signature').val(oauthSignature);
@@ -108,17 +100,17 @@
 
         return result;
     };
-
-    $('#flexRadioDefault1').click(function() {
-        if (document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-            $('#flexRadioDefault1').removeClass('selected-check')
-        } else {
-            $('#flexRadioDefault1').addClass('selected-check')
-        }
-        if (!document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
-            $('#flexRadioDefault1').prop('checked', false)
-        } else {
-            $('#flexRadioDefault1').prop('checked', true)
-        }
-    })
 })();
+
+$('#flexRadioDefault1').click(function() {
+    if (document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
+        $('#flexRadioDefault1').removeClass('selected-check')
+    } else {
+        $('#flexRadioDefault1').addClass('selected-check')
+    }
+    if (!document.getElementById('flexRadioDefault1').classList.contains('selected-check')) {
+        $('#flexRadioDefault1').prop('checked', false)
+    } else {
+        $('#flexRadioDefault1').prop('checked', true)
+    }
+})

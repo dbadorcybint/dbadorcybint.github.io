@@ -1,3 +1,5 @@
+var encodedSecret;
+
 (function () {
     window.onload = function () {
         $('#user_id').val(makeRandomUserId())
@@ -5,8 +7,6 @@
         $('#lis_person_sourcedid').val(makeRandomSourcedId($('#lis_person_name_given').val(), $('#lis_person_name_family').val()))
         updateLtiLaunchForm()
     };
-
-    var encodedSecret;
 
     this.updateLtiLaunchForm = function () {
         var launchUrl = $('#launchUrl').val();

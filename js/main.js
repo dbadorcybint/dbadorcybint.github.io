@@ -29,7 +29,6 @@
     };
 
     $('#ltiLaunchForm').submit(function() {
-        document.getElementById('credentialsForm').submit()
         this.updateLtiLaunchForm
     })
 

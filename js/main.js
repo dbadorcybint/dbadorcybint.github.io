@@ -17,7 +17,7 @@
         $('#oauth_nonce').val(uniqid('', true));
 
         var fields = [];
-        $('input[type="text"]', $ltiLaunchForm).not('[name="oauth_signature"]').not('[name="username"]').each(function () {
+        $('input[type="text"]', $ltiLaunchForm).not('[name="oauth_signature"]').each(function () {
             var input = $(this);
             fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
         });
@@ -29,8 +29,7 @@
     };
 
     $('#ltiLaunchForm').submit(function() {
-        $(this).children('#key').remove();
-        $(this).children('#secret').remove();
+        document.getElementById('credentialsForm').submit()
         this.updateLtiLaunchForm
     })
 

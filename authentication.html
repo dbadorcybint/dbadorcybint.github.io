@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+    <script src="https://kit.fontawesome.com/d46af11c6d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css"></link>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>LTI Form</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row top-row">
+            <ul class="hide-par">
+                <li>
+                    <label>Launch URL:
+                        <input style="background: bisque;" id="launchUrl" value="https://platform-lab.cybintsolutions.com/lti/auth/" type="text" size="80"/></label>
+                </li>
+            </ul>
+            <div class="top-image">
+                <img src="images/white-logo.png" width="200vw" height="auto" alt="Cybint logo"/>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="login-title">
+                    Hello!
+                </div>
+                <div class="sign-in-text">
+                    Sign into your account
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent" id="basic-addon1">
+                           <img src="images/more_icons-02.png" style="width: 40px; height: 40px;" />
+                        </span>
+                    </div>
+                    <input id="key" class="form-control no-border" type="text" name="username" value=""/>
+                </div>
+                <div class="input-group input-group-two">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent" id="basic-addon1">
+                           <img src="images/more_icons-03.png" style="width: 40px; height: 40px;" />
+                        </span>
+                    </div>
+                    <input id="secret" class="form-control no-border" type="password" name="password" value=""/>
+                </div>
+                <div class="d-flex justify-content-center bottom-options">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Remember Me
+                        </label>
+                    </div>
+                    <div class="forgot-password">
+                        Forgot password?
+                    </div>
+                </div>
+            </div>
+            <form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="">
+                <ul class="hide-par">
+                    <li style="display: none;"><label>user_id:
+                        <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
+                    <li>
+                        <label>custom_lab_id:
+                            <input style="background: bisque;" type="text" name="custom_lab_id" id="custom_lab_id" value="lab-raNnZVVgZYW8f4c5">
+                        </label>
+                    </li>
+                    <li style="display: none;"><label>roles:
+                        <input type="text" name="roles" value="Learner"></label></li>
+                    <li style="display: none;"><label>resource_link_id:
+                        <input type="text" name="resource_link_id" value="resLink_217"></label></li>
+                    <li style="display: none;"><label>resource_link_title:
+                        <input type="text" name="resource_link_title" value="SECURE CODE REVIEW"></label></li>
+                    <li style="display: none;"><label>resource_link_description:
+                        <input type="text" name="resource_link_description"
+                            value="Check through Code for vulnerabilities."></label></li>
+                    <li>
+                        <label>lis_person_name_full:
+                            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac">
+                        </label>
+                    </li>
+                    <li>
+                        <label>lis_person_name_family:
+                            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac">
+                        </label>
+                    </li>
+                    <li>
+                        <label>lis_person_name_given:
+                            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac">
+                        </label>
+                    </li>
+                    <li>
+                        <label>lis_person_contact_email_primary:
+                            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="checkisaac@school.edu">
+                        </label>
+                    </li>
+                    <li style="display: none;">
+                        <label>lis_person_sourcedid:
+                            <input style="background: bisque;" type="text" name="lis_person_sourcedid" id="lis_person_sourcedid" value="result_217_1481">
+                        </label>
+                    </li>
+                    <li style="display: none;"><label>context_id:
+                        <input type="text" name="context_id" value="contextID_1136"></label></li>
+                    <li style="display: none;"><label>context_title:
+                        <input type="text" name="context_title"
+                            value="Design of API"></label></li>
+                    <li style="display: none;"><label>context_label:
+                        <input type="text" name="context_label" value="SI182"></label></li>
+                    <li style="display: none;"><label>tool_consumer_instance_guid:
+                        <input type="text" name="tool_consumer_instance_guid"
+                            value="https://training.cybintsolutions.com/"></label></li>
+                    <li style="display: none;"><label>tool_consumer_instance_description:
+                        <input type="text" name="tool_consumer_instance_description"
+                            value="University of School (LMSng)"></label></li>
+                    <li style="display: none;"><label>custom_component_display_name:
+                        <input type="text" name="custom_component_display_name"
+                            value="lab_check"></label></li>
+            
+                    <li style="display: none;"><label>lti_version:
+                        <input type="text" name="lti_version" value="LTI-1p0"></label></li>
+                    <li style="display: none;"><label>lti_message_type:
+                        <input type="text" name="lti_message_type"
+                            value="basic-lti-launch-request"></label></li>
+            
+                    <li style="display: none;"><label>oauth_callback:
+                        <input type="text" name="oauth_callback" value="about:blank"></label></li>
+                    <li style="display: none;"><label>oauth_consumer_key:
+                        <input type="text" name="oauth_consumer_key" id="oauth_consumer_key" readonly
+                            value=""></label></li>
+                    <li style="display: none;"><label>oauth_version:
+                        <input type="text" name="oauth_version" value="1.0"></label></li>
+                    <li style="display: none;"><label>oauth_nonce:
+                        <input type="text" name="oauth_nonce" id="oauth_nonce" value=""></label></li>
+                    <li style="display: none;"><label>oauth_timestamp:
+                        <input type="text" name="oauth_timestamp" id="oauth_timestamp" value=""></label>
+                    </li>
+                    <li style="display: none;"><label>oauth_signature_method:
+                        <input type="text" name="oauth_signature_method" value="HMAC-SHA1"></label>
+                    </li>
+            
+                    <li style="display: none;">oauth_signature:
+                        <input type="text" readonly name="oauth_signature" id="oauth_signature" value=""
+                            size="40">
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="login-button">
+                        <button id="launch_lti" type="submit" class="btn login-btn">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>

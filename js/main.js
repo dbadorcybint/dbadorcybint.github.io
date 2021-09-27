@@ -1,5 +1,7 @@
 (function () {
     window.onload = function () {
+        $('#exampleModal').modal({backdrop: 'static', keyboard: false})
+        $('#exampleModal').modal('show')
         $('#user_id').val(makeRandomUserId())
         $('#lis_person_name_full').val(makeRandomFullName())
         $('#lis_person_sourcedid').val(makeRandomSourcedId($('#lis_person_name_given').val(), $('#lis_person_name_family').val()))
@@ -100,6 +102,31 @@
 
         return result;
     };
+
+    this.sendEmail = function () {
+        window.open(`mailto:david.bador@cybintsolutions.com?subject=${$('#yourEmail').val()} - Signed Agreement&body=${$('#modalBody').val()} - ${$('#yourEmail').val()} has signed the agreement.`);
+    };
+
+    $('#yourEmail').on("input", function() {
+        var input=$(this);
+        var dis = $('#agreeBtn').attr('disabled');
+        var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var is_email=re.test(input.val());
+        if(is_email) {
+            $('#agreeBtn').removeAttr("disabled");
+        } else if (!is_email && !dis) {
+            $('#agreeBtn').attr("disabled", "disabled");
+        }
+    });
+
+    $('#agreeBtn').click(function() {
+        if (!this.hasAttribute('disabled')) {
+            sendEmail()
+            setTimeout(function () {
+                $('#exampleModal').modal('toggle')
+            }, 3000)
+        }
+    });
 })();
 
 $('#flexRadioDefault1').click(function() {
@@ -114,173 +141,3 @@ $('#flexRadioDefault1').click(function() {
         $('#flexRadioDefault1').prop('checked', true)
     }
 })
-
-// const loginColumn = document.getElementById('loginColumn')
-// const leftColumn = document.getElementById('leftColumn')
-
-// const part1 = document.getElementById('part-1')
-// const part2 = document.getElementById('part-2')
-// const part3 = document.getElementById('part-3')
-// const part4 = document.getElementById('part-4')
-// const part5 = document.getElementById('part-5')
-
-// const next1 = document.getElementById('next-1')
-// const next2 = document.getElementById('next-2')
-// const next3 = document.getElementById('next-3')
-// const next4 = document.getElementById('next-4')
-
-// const launch = document.getElementById('launch_lti')
-
-// const back1 = document.getElementById('back-1')
-// const back2 = document.getElementById('back-2')
-// const back3 = document.getElementById('back-3')
-// const back4 = document.getElementById('back-4')
-
-// const progressTwentyFive = document.getElementById('progressTwentyFive')
-// const progressFifty = document.getElementById('progressFifty')
-// const progressSeventyFive = document.getElementById('progressSeventyFive')
-// const progressOneHundred = document.getElementById('progressOneHundred')
-
-// const timeStatus = document.getElementById('timeStatus')
-
-// const progressSection = document.getElementById('progressSection')
-
-// const twentyFiveNum = document.getElementById('twentyFiveNum')
-// const fiftyNum = document.getElementById('fiftyNum')
-// const seventyFiveNum = document.getElementById('seventyFiveNum')
-// const oneHundredNum = document.getElementById('oneHundredNum')
-
-// const firstCourse = document.getElementById('firstCourse')
-// const secondCourse = document.getElementById('secondCourse')
-// const thirdCourse = document.getElementById('thirdCourse')
-// const fourthCourse = document.getElementById('fourthCourse')
-// const fifthCourse = document.getElementById('fifthCourse')
-
-// if (next1) {
-//     next1.addEventListener('click', function () {
-//         part1.classList.add('hide-par')
-//         firstCourse.classList.add('hide-progress')
-//         secondCourse.classList.remove('hide-progress')
-//         part1.classList.remove('d-flex')
-//         part2.classList.add('d-flex')
-//         part2.classList.add('flex-column')
-//         part2.classList.remove('hide-par')
-//         progressTwentyFive.classList.remove('hide-progress')
-//         timeStatus.classList.add('hide-progress')
-//         progressSection.classList.remove('invisible-progress')
-//     })    
-// }
-
-// if (next2) {
-//     next2.addEventListener('click', function () {
-//         part2.classList.add('hide-par')
-//         part3.classList.remove('hide-par')
-//         part2.classList.remove('d-flex')
-//         part2.classList.remove('flex-column')
-//         secondCourse.classList.add('hide-progress')
-//         thirdCourse.classList.remove('hide-progress')
-//         progressTwentyFive.classList.add('hide-progress')
-//         progressFifty.classList.remove('hide-progress')
-//         twentyFiveNum.classList.add('hide-progress')
-//         fiftyNum.classList.remove('hide-progress')
-//     })
-// }
-
-// if (next3) {
-//     next3.addEventListener('click', function () {
-//         part3.classList.add('hide-par')
-//         part4.classList.remove('hide-par')
-//         part3.classList.remove('d-flex')
-//         part3.classList.remove('flex-column')
-//         thirdCourse.classList.add('hide-progress')
-//         fourthCourse.classList.remove('hide-progress')
-//         progressFifty.classList.add('hide-progress')
-//         progressSeventyFive.classList.remove('hide-progress')
-//         fiftyNum.classList.add('hide-progress')
-//         seventyFiveNum.classList.remove('hide-progress')
-//     })
-// }
-
-// if (next4) {
-//     next4.addEventListener('click', function () {
-//         part4.classList.add('hide-par')
-//         part5.classList.remove('hide-par')
-//         if (!part5.classList.contains('d-flex')) {
-//             part5.classList.add('d-flex')
-//         }
-//         if (!part5.classList.contains('flex-column')) {
-//             part5.classList.add('flex-column')
-//         }
-//         part4.classList.remove('flex-column')
-//         part4.classList.remove('d-flex')
-//         fourthCourse.classList.add('hide-progress')
-//         fifthCourse.classList.remove('hide-progress')
-//         progressSeventyFive.classList.add('hide-progress')
-//         progressOneHundred.classList.remove('hide-progress')
-//         seventyFiveNum.classList.add('hide-progress')
-//         oneHundredNum.classList.remove('hide-progress')
-//     })
-// }
-
-// if (back1) {
-//     back1.addEventListener('click', function () {
-//         part2.classList.add('hide-par')
-//         part2.classList.remove('d-flex')
-//         part2.classList.remove('flex-column')
-//         part1.classList.remove('hide-par')
-//         part1.classList.add('d-flex')
-//         part1.classList.add('flex-column')
-//         secondCourse.classList.add('hide-progress')
-//         firstCourse.classList.remove('hide-progress')
-//         progressTwentyFive.classList.add('hide-progress')
-//         timeStatus.classList.remove('hide-progress')
-//         progressSection.classList.add('invisible-progress')
-//     })
-// }
-
-// if (back2) {
-//     back2.addEventListener('click', function () {
-//         part3.classList.add('hide-par')
-//         part2.classList.remove('hide-par')
-//         part2.classList.add('d-flex')
-//         part2.classList.add('flex-column')
-//         thirdCourse.classList.add('hide-progress')
-//         secondCourse.classList.remove('hide-progress')
-//         progressFifty.classList.add('hide-progress')
-//         progressTwentyFive.classList.remove('hide-progress')
-//         fiftyNum.classList.add('hide-progress')
-//         twentyFiveNum.classList.remove('hide-progress')
-//     })
-// }
-
-// if (back3) {
-//     back3.addEventListener('click', function () {
-//         part4.classList.add('hide-par')
-//         part3.classList.remove('hide-par')
-//         part3.classList.add('d-flex')
-//         part3.classList.add('flex-column')
-//         fourthCourse.classList.add('hide-progress')
-//         thirdCourse.classList.remove('hide-progress')
-//         progressSeventyFive.classList.add('hide-progress')
-//         progressFifty.classList.remove('hide-progress')
-//         seventyFiveNum.classList.add('hide-progress')
-//         fiftyNum.classList.remove('hide-progress')
-//     })
-// }
-
-// if (back4) {
-//     back4.addEventListener('click', function () {
-//         part5.classList.add('hide-par')
-//         part5.classList.remove('d-flex')
-//         part5.classList.remove('flex-column')
-//         part4.classList.remove('hide-par')
-//         part4.classList.add('d-flex')
-//         part4.classList.add('flex-column')
-//         fifthCourse.classList.add('hide-progress')
-//         fourthCourse.classList.remove('hide-progress')
-//         progressOneHundred.classList.add('hide-progress')
-//         progressSeventyFive.classList.remove('hide-progress')
-//         oneHundredNum.classList.add('hide-progress')
-//         seventyFiveNum.classList.remove('hide-progress')
-//     })
-// }

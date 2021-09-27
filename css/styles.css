@@ -416,11 +416,25 @@ div.progress {
     border-right: 0 !important;
     border-top: 0 !important;
     color: white !important;
-    width: 21vw !important;
 }
 
 .form-control::placeholder {
     color: #909090 !important;
+}
+
+.agree-control {
+    background-color: transparent !important;
+    border-bottom: 1px solid #EF9869 !important;
+    border-left: 0 !important;
+    border-radius: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    color: white !important;
+}
+
+.email-required {
+    color: #EF9869;
+    margin-left: 0.5vw;
 }
 
 .login-title {
@@ -434,8 +448,97 @@ div.progress {
     text-decoration: underline;
 }
 
+.terms {
+    width: 30px;
+    height: auto;
+}
+
 .login-button {
     margin-top: 8vh;
+}
+
+.modal-dialog{
+    overflow-y: initial !important;
+    max-width: 40vw !important;
+}
+
+.agree-email-label {
+    font-family: 'Rubik' !important;
+    font-size: 24px;    
+}
+
+.modal-content {
+    border: 1px solid #EF9869 !important;
+    border-radius: 12px !important;
+    background-color: #191919 !important;
+}
+
+.modal-header {
+    justify-content: start !important;
+    padding-top: 20px !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    border-bottom: 1px solid #EF9869 !important;
+}
+
+.modal-title {
+    font-family: 'Rubik' !important;
+    font-weight: 400 !important;
+}
+
+.modal-title {
+    margin-left: 20px;
+}
+
+.modal-body {
+    padding-top: 50px !important;
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+    font-family: 'Rubik' !important;
+    font-size: 20px;
+}
+
+.modal-footer {
+    flex-direction: column !important;
+    justify-content: center !important;
+    border-top: 0px !important;
+}
+
+.modal-input-group {
+    width: 25vw !important;
+    margin-top: 8vh;
+}
+
+.inner-modal-text {
+    height: 40vh;
+    overflow-y: auto
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #282923;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #EF9869;
+    border-radius: 5px;
+}
+
+.agree-btn {
+    width: 10vw;
+    background-color: #EF9869 !important;
+    color: #FFFFFF !important;
+    opacity: 1;
+    font-family: 'Rubik';
+    font-size: 18px !important;
+    border-top-left-radius: 50px !important;
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+    margin-top: 3vh !important;  
 }
 
 .login-btn {
